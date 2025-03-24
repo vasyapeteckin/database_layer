@@ -1,7 +1,7 @@
 [project]
 name = "database-layer"
 version = "0.1.0"
-description = "Add your description here"
+description = "This module provides a lightweight, asynchronous database abstraction layer built with SQLAlchemy and Pydantic for CRUD operations."
 readme = "README.md"
 requires-python = ">=3.10"
 
