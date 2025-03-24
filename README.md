@@ -5,13 +5,11 @@ This module provides a lightweight, asynchronous database abstraction layer buil
 ## Purpose
 The database_layer module is designed to:
 - Simplify database configuration and connection management.
-- Provide a base structure for defining SQLAlchemy models.
 - Offer reusable, generic services for interacting with database entities asynchronously.
 
 ## Features
 - Configurable database settings via environment variables or defaults.
 - Support for SQLite and PostgreSQL with asynchronous drivers (aiosqlite and asyncpg).
-- Base model class with schema conversion support.
 - Generic service class for adding, retrieving, and updating records.
 - Asynchronous session management with SQLAlchemy's async_sessionmaker.
 
@@ -37,11 +35,6 @@ Default settings use SQLite with a local file (database.sqlite).
 
 Customize settings by creating a .env file.
 
-### Define Models:
-Inherit from Base in core.py to create your own models in models.py.
-
-Implement the `to_schema` method for schema conversion.
-
 ### Use Services:
 Extend `BaseService` in services.py to create custom services for your models.
 
@@ -64,7 +57,7 @@ DB_POOL_SIZE=8
 
 ## Quick Start
 ```python
-from database_layer import get_session, create_database, BaseAccount, BaseService
+from database_layer import get_session, create_database, BaseService
 import asyncio
 
 async def main():
@@ -73,7 +66,6 @@ async def main():
 
     # Example: Add a new account
     async with get_session() as session:
-        account = BaseAccount(username="user1", password="pass123")
         result = await BaseService.add(session, account)
         print(result)
 
