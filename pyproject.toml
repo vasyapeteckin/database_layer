@@ -1,0 +1,18 @@
+[project]
+name = "database-layer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "pydantic-settings>=2.7.1",
+    "sqlalchemy[asyncio]>=2.0.36",
+]
+
+[project.optional-dependencies]
+
+sqlite = [
+    "aiosqlite>=0.20.0",
+]
+
