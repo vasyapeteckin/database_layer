@@ -1,9 +1,11 @@
 from typing import Optional
 
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class DatabaseSettings(BaseSettings):
+    model_config = SettingsConfigDict(extra='ignore', env_file=('.env.dev', '.env'))
+
     DB: str = 'sqlite'
     DB_DRIVER: str = 'aiosqlite'
     DB_USER: Optional[str] = None
@@ -14,9 +16,6 @@ class DatabaseSettings(BaseSettings):
     DB_POOL_SIZE: Optional[int] = None
 
     ECHO: bool = False
-
-    class Config:
-        env_file = ".env"
 
     @property
     def url(self):
