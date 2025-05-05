@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class DatabaseSettings(BaseSettings):
-    model_config = SettingsConfigDict(extra='ignore', env_file=('.env.dev', '.env'))
+    model_config = SettingsConfigDict(extra='ignore', env_file=('.env', '.env.dev'))
 
     DB: str = 'sqlite'
     DB_DRIVER: str = 'aiosqlite'
